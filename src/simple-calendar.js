@@ -9,27 +9,37 @@
  
  class SimpleCalendar {
   // Constructor
-  constructor(year, month, contents = {}) {
+  constructor(options = {}) {
+	// Save options
+	this.options = options;
+	
 	// Set year
-	if (!year || !(Number.isInteger(year))) {
+	if (!options.year || !(Number.isInteger(options.year))) {
 	  // Use current year if given year is not valid
-	  this.year = new Date().getFullYear();
+	  this.options.year = new Date().getFullYear();
 	} else {
 	  // Use given year
-	  this.year = year;
+	  this.options.year = options.year;
 	}
 	
 	// Set month
-	if (!month || !(Number.isInteger(month) || month < 0 || month > 11)) {
+	if (!options.month || !(Number.isInteger(options.month) || options.month < 0 || options.month > 11)) {
 	  // Use current month if given month is not valid
-	  this.month = new Date().getMonth();
+	  this.options.month = new Date().getMonth();
 	} else {
 	  // Use given month
-	  this.month = month;
+	  this.options.month = options.month;
 	}
 	
-	// Set contents
-	this.contents = contents;
+	// Set day contents
+	if (!options.days) {
+	  this.options.days = {};
+	}
+	
+	// Draw calendar if HTML element given
+	if (options.element) {
+	  this.drawCalendar(options.element);
+	}
   }
   
   // Draw calendar table in given element
@@ -56,12 +66,12 @@
 	];
 	
 	// Calendar day variables
-	const firstDay = new Date(this.year, this.month, 1);
+	const firstDay = new Date(this.options.year, this.options.month, 1);
 	const firstWeekday = firstDay.getDay();
-	const lastDay = new Date(this.year, this.month + 1, 0);
+	const lastDay = new Date(this.options.year, this.options.month + 1, 0);
 	const lastWeekday = lastDay.getDay();
 	const monthDays = lastDay.getDate();
-	const monthStr = monthNames[this.month];
+	const monthStr = monthNames[this.options.month];
 	
 	// Construct day cells array
 	let dayCells = [];
@@ -80,7 +90,7 @@
 	for (let i = 0; i < dayCells.length; i++) {
 	  daysHTML += "<td>\n";
 	  daysHTML += "<div>" + dayCells[i] + "</div>\n";
-	  daysHTML += this.contents[i + 1] ? this.contents[i + 1] + "\n" : "";
+	  daysHTML += this.options.days[i + 1] ? this.options.days[i + 1] + "\n" : "";
 	  daysHTML += "</td>\n";
 	  daysHTML += (i + 1) % 7 == 0 ? "</tr>\n<tr>\n" : "";
 	}
@@ -88,7 +98,7 @@
 	
 	// Construct calendar HTML
 	const calendarHTML = `
-	<div>${monthNames[this.month]} ${this.year}</div>
+	<div>${monthNames[this.options.month]} ${this.options.year}</div>
 	<table>
 	  <thead>
 	    <tr>

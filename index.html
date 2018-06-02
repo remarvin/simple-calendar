@@ -14,8 +14,12 @@
 	<script src="dist/simple-calendar.js"></script>
 	<script>
 	  var demo1 = document.querySelector('#demo1');
-      var calendar = new SimpleCalendar(2018, 5, {});
-      calendar.drawCalendar(demo1);
+	  
+	  var calendar = new SimpleCalendar({
+	    year: 2018,
+		month: 6,
+		element: demo1
+	  });
 	</script>
   </body>
 </html>

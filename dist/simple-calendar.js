@@ -15,31 +15,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var SimpleCalendar = function () {
 	// Constructor
-	function SimpleCalendar(year, month) {
-		var contents = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+	function SimpleCalendar() {
+		var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 		_classCallCheck(this, SimpleCalendar);
 
+		// Save options
+		this.options = options;
+
 		// Set year
-		if (!year || !Number.isInteger(year)) {
+		if (!options.year || !Number.isInteger(options.year)) {
 			// Use current year if given year is not valid
-			this.year = new Date().getFullYear();
+			this.options.year = new Date().getFullYear();
 		} else {
 			// Use given year
-			this.year = year;
+			this.options.year = options.year;
 		}
 
 		// Set month
-		if (!month || !(Number.isInteger(month) || month < 0 || month > 11)) {
+		if (!options.month || !(Number.isInteger(options.month) || options.month < 0 || options.month > 11)) {
 			// Use current month if given month is not valid
-			this.month = new Date().getMonth();
+			this.options.month = new Date().getMonth();
 		} else {
 			// Use given month
-			this.month = month;
+			this.options.month = options.month;
 		}
 
-		// Set contents
-		this.contents = contents;
+		// Set day contents
+		if (!options.days) {
+			this.options.days = {};
+		}
+
+		// Draw calendar if HTML element given
+		if (options.element) {
+			this.drawCalendar(options.element);
+		}
 	}
 
 	// Draw calendar table in given element
@@ -57,12 +67,12 @@ var SimpleCalendar = function () {
 			var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 			// Calendar day variables
-			var firstDay = new Date(this.year, this.month, 1);
+			var firstDay = new Date(this.options.year, this.options.month, 1);
 			var firstWeekday = firstDay.getDay();
-			var lastDay = new Date(this.year, this.month + 1, 0);
+			var lastDay = new Date(this.options.year, this.options.month + 1, 0);
 			var lastWeekday = lastDay.getDay();
 			var monthDays = lastDay.getDate();
-			var monthStr = monthNames[this.month];
+			var monthStr = monthNames[this.options.month];
 
 			// Construct day cells array
 			var dayCells = [];
@@ -81,14 +91,14 @@ var SimpleCalendar = function () {
 			for (var _i3 = 0; _i3 < dayCells.length; _i3++) {
 				daysHTML += "<td>\n";
 				daysHTML += "<div>" + dayCells[_i3] + "</div>\n";
-				daysHTML += this.contents[_i3 + 1] ? this.contents[_i3 + 1] + "\n" : "";
+				daysHTML += this.options.days[_i3 + 1] ? this.options.days[_i3 + 1] + "\n" : "";
 				daysHTML += "</td>\n";
 				daysHTML += (_i3 + 1) % 7 == 0 ? "</tr>\n<tr>\n" : "";
 			}
 			daysHTML += "</tr>\n";
 
 			// Construct calendar HTML
-			var calendarHTML = "\n\t<div>" + monthNames[this.month] + " " + this.year + "</div>\n\t<table>\n\t  <thead>\n\t    <tr>\n\t\t  <th>Sun</th>\n\t\t  <th>Mon</th>\n\t\t  <th>Tue</th>\n\t\t  <th>Wed</th>\n\t\t  <th>Thu</th>\n\t\t  <th>Fri</th>\n\t\t  <th>Sat</th>\n\t\t</tr>\n\t  </thead>\n\t  <tbody>\n\t    " + daysHTML + "\n\t  </tbody>\n\t</table>\n\t";
+			var calendarHTML = "\n\t<div>" + monthNames[this.options.month] + " " + this.options.year + "</div>\n\t<table>\n\t  <thead>\n\t    <tr>\n\t\t  <th>Sun</th>\n\t\t  <th>Mon</th>\n\t\t  <th>Tue</th>\n\t\t  <th>Wed</th>\n\t\t  <th>Thu</th>\n\t\t  <th>Fri</th>\n\t\t  <th>Sat</th>\n\t\t</tr>\n\t  </thead>\n\t  <tbody>\n\t    " + daysHTML + "\n\t  </tbody>\n\t</table>\n\t";
 
 			// Insert HTML into element
 			element.innerHTML = calendarHTML;
