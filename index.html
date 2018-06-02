@@ -4,13 +4,18 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-    <title>ES6 Template</title>
+    <title>Simple Calendar</title>
 	
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <!-- Content goes here -->
+    <div id="demo1"></div>
 	
-	<script src="dist/main.js"></script>
+	<script src="dist/simple-calendar.js"></script>
+	<script>
+	  var demo1 = document.querySelector('#demo1');
+      var calendar = new SimpleCalendar(2018, 5, {});
+      calendar.drawCalendar(demo1);
+	</script>
   </body>
 </html>
