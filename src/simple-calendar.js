@@ -13,32 +13,29 @@
 	// Save options
 	this.options = options;
 	
-	// Set year
-	if (!options.year || !(Number.isInteger(options.year))) {
-	  // Use current year if given year is not valid
+	// Use current year if year is not valid
+	if (!this.options.year || !(Number.isInteger(this.options.year))) {
 	  this.options.year = new Date().getFullYear();
-	} else {
-	  // Use given year
-	  this.options.year = options.year;
 	}
 	
-	// Set month
-	if (!options.month || !(Number.isInteger(options.month) || options.month < 0 || options.month > 11)) {
-	  // Use current month if given month is not valid
+	// Use current month if month is not valid
+	if (!this.options.month || !(Number.isInteger(this.options.month) || this.options.month < 0 || this.options.month > 11)) {
 	  this.options.month = new Date().getMonth();
-	} else {
-	  // Use given month
-	  this.options.month = options.month;
 	}
 	
-	// Set day contents
-	if (!options.days) {
+	// Set day contents to empty hash if none given
+	if (!this.options.days) {
 	  this.options.days = {};
 	}
 	
+	// Set day names to default value if not other valid option
+	if (!(this.options.dayNames === 'long' || this.options.dayNames === 'letters')) {
+	  this.options.dayNames = 'short';
+	}
+	
 	// Draw calendar if HTML element given
-	if (options.element) {
-	  this.drawCalendar(options.element);
+	if (this.options.element) {
+	  this.drawCalendar(this.options.element);
 	}
   }
   
@@ -49,20 +46,57 @@
 	  throw new Error('simple-calendar error: missing or invalid element');
 	}
 	
-	// Month names
+	// Set day names
+	let dayNames = [];
+	switch (this.options.dayNames) {
+	  case 'long':
+	    dayNames = [
+	      'Sunday',
+		  'Monday',
+		  'Tuesday',
+		  'Wednesday',
+		  'Thursday',
+		  'Friday',
+		  'Saturday'
+	    ];
+	    break;
+	  case 'letters':
+	    dayNames = [
+	      'S',
+		  'M',
+		  'T',
+		  'W',
+		  'T',
+		  'F',
+		  'S'
+	    ];
+		break;
+	  default:
+	    dayNames = [
+	      'Sun',
+	      'Mon',
+	      'Tue',
+	      'Wed',
+	      'Thu',
+	      'Fri',
+	      'Sat'
+	    ];
+	}
+	
+	// Set month names
 	const monthNames = [
-	  "January",
-	  "February",
-	  "March",
-	  "April",
-	  "May",
-	  "June",
-	  "July",
-	  "August",
-	  "September",
-	  "October",
-	  "November",
-	  "December"
+	  'January',
+	  'February',
+	  'March',
+	  'April',
+	  'May',
+	  'June',
+	  'July',
+	  'August',
+	  'September',
+	  'October',
+	  'November',
+	  'December'
 	];
 	
 	// Calendar day variables
@@ -76,21 +110,28 @@
 	// Construct day cells array
 	let dayCells = [];
 	for (let i = 0; i < firstWeekday; i++) {
-	  dayCells.push("");
+	  dayCells.push('');
 	}
 	for (let i = 0; i < monthDays; i++) {
 	  dayCells.push((i + 1).toString());
 	}
 	for (let i = 0; i < (6 - lastWeekday); i++) {
-	  dayCells.push("");
+	  dayCells.push('');
 	}
 	
-	//Construct calendar days HTML
+	// Construct day names HTML
+	let dayNamesHTML = "<tr>\n";
+	for (let i = 0; i < 7; i++) {
+	  dayNamesHTML += `<th>${dayNames[i]}</th>\n`;
+	}
+	dayNamesHTML += "</tr>\n";
+	
+	//Construct days HTML
 	let daysHTML = "<tr>\n";
 	for (let i = 0; i < dayCells.length; i++) {
 	  daysHTML += "<td>\n";
-	  daysHTML += "<div>" + dayCells[i] + "</div>\n";
-	  daysHTML += this.options.days[i + 1] ? this.options.days[i + 1] + "\n" : "";
+	  daysHTML += "<span>" + dayCells[i] + "</span>\n";
+	  daysHTML += this.options.days[dayCells[i]] ? this.options.days[dayCells[i]] + "\n" : "";
 	  daysHTML += "</td>\n";
 	  daysHTML += (i + 1) % 7 == 0 ? "</tr>\n<tr>\n" : "";
 	}
@@ -101,15 +142,7 @@
 	<div>${monthNames[this.options.month]} ${this.options.year}</div>
 	<table>
 	  <thead>
-	    <tr>
-		  <th>Sun</th>
-		  <th>Mon</th>
-		  <th>Tue</th>
-		  <th>Wed</th>
-		  <th>Thu</th>
-		  <th>Fri</th>
-		  <th>Sat</th>
-		</tr>
+	    ${dayNamesHTML}
 	  </thead>
 	  <tbody>
 	    ${daysHTML}
