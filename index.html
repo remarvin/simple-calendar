@@ -14,7 +14,18 @@
 	<script src="dist/simple-calendar.js"></script>
 	<script>
 	  var demo1 = document.querySelector('#demo1');
-	  
+	  simpleCalendar(demo1, {
+	    year: 2018,
+		month: 11,
+		dayDisplay: 'long',
+		monthDisplay: 'short',
+		days: {
+		  1: '<div title="Some amazing stuff happens today">Stuff</div>',
+		  15: '<div title="Some more amazing stuff happens here">Stuff</div>'
+		}
+	  });
+	
+	  /*
 	  var calendar = new SimpleCalendar({
 	    year: 2018,
 		month: 7,
@@ -24,6 +35,7 @@
 		  1: '<div title="Some amazing stuff happens today">Stuff</div>'
 		}
 	  });
+	  */
 	</script>
   </body>
 </html>
