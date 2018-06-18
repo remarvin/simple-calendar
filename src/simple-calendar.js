@@ -167,16 +167,16 @@ function simpleCalendar (element, options = {}) {
   let daysHTML = "<tr>\n";
   for (let i = 0; i < dayCells.length; i++) {
 	daysHTML += "<td>\n";
-	daysHTML += "<span>" + dayCells[i] + "</span>\n";
+	daysHTML += "<span class='day'>" + dayCells[i] + "</span>\n";
 	daysHTML += days[dayCells[i]] ? days[dayCells[i]] + "\n" : "";
 	daysHTML += "</td>\n";
-	daysHTML += (i + 1) % 7 == 0 ? "</tr>\n<tr>\n" : "";
+	daysHTML += (i + 1) % 7 == 0 && i != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
   }
   daysHTML += "</tr>\n";
 
   // Construct calendar HTML
   const calendarHTML = `
-    <div><span class='month'>${monthNames[month]}</span> <span class='year'>${year}</span></div>
+    <div class='header'><span class='month'>${monthNames[month]}</span> <span class='year'>${year}</span></div>
 	<table>
 	  <thead>
 	    ${dayNamesHTML}

@@ -1,1 +1,24 @@
-// CSS styles go here
+table {
+  border-spacing: 0;
+}
+
+th {
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+  background-color: lightgray;
+}
+
+td {
+  width: 80px;
+  height: 80px;
+  vertical-align: baseline;
+  border: 1px solid black;
+}
+
+.header {
+  width: 560px;
+  text-align: center;
+  line-height: 1.5em;
+  font-size: 24px;
+  font-weight: bold;
+}

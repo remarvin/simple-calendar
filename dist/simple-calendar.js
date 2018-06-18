@@ -108,15 +108,15 @@ function simpleCalendar(element) {
 	var daysHTML = "<tr>\n";
 	for (var _i4 = 0; _i4 < dayCells.length; _i4++) {
 		daysHTML += "<td>\n";
-		daysHTML += "<span>" + dayCells[_i4] + "</span>\n";
+		daysHTML += "<span class='day'>" + dayCells[_i4] + "</span>\n";
 		daysHTML += days[dayCells[_i4]] ? days[dayCells[_i4]] + "\n" : "";
 		daysHTML += "</td>\n";
-		daysHTML += (_i4 + 1) % 7 == 0 ? "</tr>\n<tr>\n" : "";
+		daysHTML += (_i4 + 1) % 7 == 0 && _i4 != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
 	}
 	daysHTML += "</tr>\n";
 
 	// Construct calendar HTML
-	var calendarHTML = '\n    <div><span class=\'month\'>' + monthNames[month] + '</span> <span class=\'year\'>' + year + '</span></div>\n\t<table>\n\t  <thead>\n\t    ' + dayNamesHTML + '\n\t  </thead>\n\t  <tbody>\n\t    ' + daysHTML + '\n\t  </tbody>\n\t</table>\n  ';
+	var calendarHTML = '\n    <div class=\'header\'><span class=\'month\'>' + monthNames[month] + '</span> <span class=\'year\'>' + year + '</span></div>\n\t<table>\n\t  <thead>\n\t    ' + dayNamesHTML + '\n\t  </thead>\n\t  <tbody>\n\t    ' + daysHTML + '\n\t  </tbody>\n\t</table>\n  ';
 
 	// Insert HTML into element
 	element.innerHTML = calendarHTML;
