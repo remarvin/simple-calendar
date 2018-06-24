@@ -146,31 +146,31 @@ function simpleCalendar (element, options = {}) {
 
   // Construct day cells array
   let dayCells = [];
-  for (let i = 0; i < firstWeekday; i++) {
+  for (let counter = 0; counter < firstWeekday; counter++) {
 	dayCells.push('');
   }
-  for (let i = 0; i < monthDays; i++) {
-	dayCells.push((i + 1).toString());
+  for (let counter = 0; counter < monthDays; counter++) {
+	dayCells.push((counter + 1).toString());
   }
-  for (let i = 0; i < (6 - lastWeekday); i++) {
+  for (let counter = 0; counter < (6 - lastWeekday); counter++) {
 	dayCells.push('');
   }
 
   // Construct day names HTML
   let dayNamesHTML = "<tr>\n";
-  for (let i = 0; i < 7; i++) {
-	dayNamesHTML += `<th>${dayNames[i]}</th>\n`;
+  for (let counter = 0; counter < 7; counter++) {
+	dayNamesHTML += `<th>${dayNames[counter]}</th>\n`;
   }
   dayNamesHTML += "</tr>\n";
 
   //Construct days HTML
   let daysHTML = "<tr>\n";
-  for (let i = 0; i < dayCells.length; i++) {
+  for (let counter = 0; counter < dayCells.length; counter++) {
 	daysHTML += "<td>\n";
-	daysHTML += "<span class='day'>" + dayCells[i] + "</span>\n";
-	daysHTML += days[dayCells[i]] ? days[dayCells[i]] + "\n" : "";
+	daysHTML += "<span class='day'>" + dayCells[counter] + "</span>\n";
+	daysHTML += days[dayCells[counter]] ? days[dayCells[counter]] + "\n" : "";
 	daysHTML += "</td>\n";
-	daysHTML += (i + 1) % 7 == 0 && i != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
+	daysHTML += (counter + 1) % 7 == 0 && counter != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
   }
   daysHTML += "</tr>\n";
 
