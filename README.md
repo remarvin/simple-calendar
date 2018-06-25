@@ -11,12 +11,12 @@ in the page.
 ## Usage
 Call simple-calendar like so:
 ```js
-simpleCalendar(elementContainer*, {options});
+simpleCalendar(element[, {options}]);
 ```
 
 The default option values are:
 ```js
-simpleCalendar(elementContainer*, {
+simpleCalendar(element, {
 	year:			new Date().getFullYear(),		// year, defaults to current year
 	month:			new Date().getMonth(),			// zero-based index month, defaults to current month
 	days:			{},								// optional content for day cells
@@ -25,7 +25,7 @@ simpleCalendar(elementContainer*, {
 });
 ```
 
-* Anything already in the given element will be overwritten by the calendar.
+Note: Anything already in the given element will be overwritten by the calendar.
 
 ### Days
 Use the `days` option to include additional content on specific days like so:
