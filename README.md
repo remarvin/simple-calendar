@@ -5,7 +5,9 @@ Version: `1.0.0`
 
 ## Install
 Download the simple-calendar JavaScript file in the `dist` folder and include
-`<script src="path/to/simple-calendar.min.js"></script>`
+```
+<script src="path/to/simple-calendar.min.js"></script>
+```
 in the page.
 
 ## Usage
