@@ -108,10 +108,10 @@ function simpleCalendar(element) {
 	var daysHTML = "<tr>\n";
 	for (var _counter4 = 0; _counter4 < dayCells.length; _counter4++) {
 		daysHTML += "<td>\n";
-		daysHTML += "<span class='day'>" + dayCells[_counter4] + "</span>\n";
-		daysHTML += days[dayCells[_counter4]] ? days[dayCells[_counter4]] + "\n" : "";
+		daysHTML += dayCells[_counter4] === '' ? '' : '<span class=\'day\'>' + dayCells[_counter4] + '</span>\n';
+		daysHTML += days[dayCells[_counter4]] ? days[dayCells[_counter4]] + "\n" : '';
 		daysHTML += "</td>\n";
-		daysHTML += (_counter4 + 1) % 7 == 0 && _counter4 != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
+		daysHTML += (_counter4 + 1) % 7 == 0 && _counter4 != dayCells.length - 1 ? "</tr>\n<tr>\n" : '';
 	}
 	daysHTML += "</tr>\n";
 

@@ -167,10 +167,10 @@ function simpleCalendar (element, options = {}) {
   let daysHTML = "<tr>\n";
   for (let counter = 0; counter < dayCells.length; counter++) {
 	daysHTML += "<td>\n";
-	daysHTML += "<span class='day'>" + dayCells[counter] + "</span>\n";
-	daysHTML += days[dayCells[counter]] ? days[dayCells[counter]] + "\n" : "";
+	daysHTML += dayCells[counter] === '' ? '' : `<span class='day'>${dayCells[counter]}</span>\n`;
+	daysHTML += days[dayCells[counter]] ? days[dayCells[counter]] + "\n" : '';
 	daysHTML += "</td>\n";
-	daysHTML += (counter + 1) % 7 == 0 && counter != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
+	daysHTML += (counter + 1) % 7 == 0 && counter != dayCells.length - 1 ? "</tr>\n<tr>\n" : '';
   }
   daysHTML += "</tr>\n";
 

@@ -17,11 +17,11 @@ simpleCalendar(element[, {options}]);
 The default option values are:
 ```js
 simpleCalendar(element, {
-	year:         new Date().getFullYear(),   // year, defaults to current year
-	month:        new Date().getMonth(),      // zero-based index month, defaults to current month
-	days:         {},                         // optional content for day cells
-	dayDisplay:   'short',                    // display of day names in header row
-	monthDisplay: 'long'                      // display of month name in title
+  year:         new Date().getFullYear(),   // year, defaults to current year
+  month:        new Date().getMonth(),      // zero-based index month, defaults to current month
+  days:         {},                         // optional content for day cells
+  dayDisplay:   'short',                    // display of day names in header row
+  monthDisplay: 'long'                      // display of month name in title
 });
 ```
 
@@ -31,8 +31,8 @@ Note: Anything already in the given element will be overwritten by the calendar.
 Use the `days` option to include additional content on specific days like so:
 ```js
 days: {
-	1: 'Stuff',
-	15: 'More stuff'
+  1: 'Stuff',
+  15: 'More stuff'
 }
 ```
 
