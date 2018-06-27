@@ -4,24 +4,44 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-    <title>Simple Calendar</title>
+    <title>Simple-Calendar Demo</title>
 	
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="demo1"></div>
+    <h1>Simple-Calendar Demo</h1>
 	
-	<script src="dist/simple-calendar.js"></script>
+    <div id="demo"></div>
+	
+	<div id="info">
+	  <xmp>
+var demo = document.querySelector("#demo");
+
+simpleCalendar(demo, {
+  year: 2018,
+  month: 7,
+  dayDisplay: "letter",
+  monthDisplay: "short",
+  days: {
+    1: "<div title='Stuff'>&#9733;</div>",
+    15: "<div title='More stuff'>&#9728;</div>"
+  }
+});
+	  </xmp>
+	</div>
+	
+	<script src="dist/simple-calendar.min.js"></script>
 	<script>
-	  var demo1 = document.querySelector('#demo1');
-	  simpleCalendar(demo1, {
+	  var demo = document.querySelector("#demo");
+	  
+	  simpleCalendar(demo, {
 	    year: 2018,
-		month: 11,
-		dayDisplay: 'short',
-		monthDisplay: 'short',
+		month: 7,
+		dayDisplay: "letter",
+		monthDisplay: "short",
 		days: {
-		  1: '<div title="Some amazing stuff happens today">Stuff</div>',
-		  15: '<div title="Some more amazing stuff happens here">Stuff</div>'
+		  1: "<div title='Stuff'>&#9733;</div>",
+		  15: "<div title='More stuff'>&#9728;</div>"
 		}
 	  });
 	</script>
