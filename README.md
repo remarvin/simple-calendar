@@ -10,6 +10,9 @@ Download the simple-calendar JavaScript file in the `dist` folder and include
 ```
 in the page.
 
+## Demo
+Download the repository and view index.html to see an example.
+
 ## Usage
 Call simple-calendar like so:
 ```js
@@ -56,6 +59,3 @@ Use the `monthDisplay` option to set the display of the month name in the title.
 
 ### Styling
 Styling is up to you! The calendar HTML includes classes for the `month` display, `year` display, and `day` display numbers for easier styling.
-
-### Demo
-Download the repository and view the index.html file to see an example.
