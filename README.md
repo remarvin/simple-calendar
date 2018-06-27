@@ -3,15 +3,15 @@ A simple JavaScript calendar with no dependencies.
 
 Version: `1.0.0`
 
+## Demo
+Download the repository and view index.html to see an example.
+
 ## Install
 Download the simple-calendar JavaScript file in the `dist` folder and include
 ```
 <script src="path/to/simple-calendar.min.js"></script>
 ```
 in the page.
-
-## Demo
-Download the repository and view index.html to see an example.
 
 ## Usage
 Call simple-calendar like so:
