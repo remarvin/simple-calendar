@@ -57,5 +57,5 @@ Use the `monthDisplay` option to set the display of the month name in the title.
 ### Styling
 Styling is up to you! The calendar HTML includes classes for the `month` display, `year` display, and `day` display numbers for easier styling.
 
-## Demo
+### Demo
 Download the repository and view the index.html file to see an example.
