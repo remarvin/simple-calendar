@@ -25,27 +25,27 @@ function simpleCalendar(element) {
 	var monthDisplay = "long";
 
 	// Set year from options if valid
-	if (options.year && Number.isInteger(options.year)) {
+	if (options.year != null && Number.isInteger(options.year)) {
 		year = options.year;
 	}
 
 	// Set month from options if valid
-	if (options.month && Number.isInteger(options.month) && options.month >= 0 && options.month <= 11) {
+	if (options.month != null && Number.isInteger(options.month) && options.month >= 0 && options.month <= 11) {
 		month = options.month;
 	}
 
 	// Set day contents from options if given
-	if (options.days) {
+	if (options.days != null) {
 		days = options.days;
 	}
 
 	// Set day display from options if valid
-	if (options.dayDisplay && (options.dayDisplay.toLowerCase() === "long" || options.dayDisplay.toLowerCase() === "letter")) {
+	if (options.dayDisplay != null && (options.dayDisplay.toLowerCase() === "long" || options.dayDisplay.toLowerCase() === "letter")) {
 		dayDisplay = options.dayDisplay.toLowerCase();
 	}
 
 	// Set month display from options if valid
-	if (options.monthDisplay && (options.monthDisplay.toLowerCase() === "short" || options.monthDisplay.toLowerCase() === "number")) {
+	if (options.monthDisplay != null && (options.monthDisplay.toLowerCase() === "short" || options.monthDisplay.toLowerCase() === "number")) {
 		monthDisplay = options.monthDisplay.toLowerCase();
 	}
 
