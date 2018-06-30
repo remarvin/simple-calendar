@@ -36,8 +36,8 @@ Note: Anything already in the given element will be overwritten by the calendar.
 Use the `days` option to include additional content on specific days like so:
 ```js
 days: {
-  1: "Stuff",
-  15: "More stuff"
+  "1": "Stuff",
+  "15": "More stuff"
 }
 ```
 
