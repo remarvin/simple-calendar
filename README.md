@@ -4,7 +4,7 @@ A simple JavaScript calendar with no dependencies.
 Version: `1.0.0`
 
 ## Demo
-Download the repository and view index.html to see an example.
+See the [demo page](http://www.ripleymarvin.com/demo-simple-calendar), or download the repository and view index.html for an example.
 
 ## Install
 Download the simple-calendar JavaScript file in the `dist` folder and include
