@@ -1,7 +1,7 @@
 "use strict";
 
 /*
- * simple-calendar v1.0.0
+ * simple-calendar v1.0.1
  *
  * A simple JavaScript calendar with no dependencies.
  * By Ripley Marvin
@@ -84,6 +84,9 @@ function simpleCalendar(element) {
 	var lastWeekday = lastDay.getDay();
 	var monthDays = lastDay.getDate();
 	var monthStr = monthNames[month];
+	var currentYear = new Date().getFullYear();
+	var currentMonth = new Date().getMonth();
+	var currentDay = new Date().getDate();
 
 	// Construct day cells array
 	var dayCells = [];
@@ -107,8 +110,20 @@ function simpleCalendar(element) {
 	//Construct days HTML
 	var daysHTML = "<tr>\n";
 	for (var _counter4 = 0; _counter4 < dayCells.length; _counter4++) {
-		daysHTML += "<td>\n";
-		daysHTML += dayCells[_counter4] === "" ? "" : "<span class=\"day\">" + dayCells[_counter4] + "</span>\n";
+		var isDay = dayCells[_counter4] != "";
+		var isCurrentDay = year === currentYear && month === currentMonth && dayCells[_counter4] === currentDay.toString();
+
+		var dayClasses = [];
+		dayClasses.push(isDay ? "day" : "");
+		dayClasses.push(isCurrentDay ? "current-day" : "");
+
+		daysHTML += "<td";
+		if (dayClasses != []) {
+			daysHTML += " class=\"" + dayClasses.join(" ") + "\"";
+		}
+		daysHTML += ">\n";
+
+		daysHTML += isDay ? "<span class=\"day-number\">" + dayCells[_counter4] + "</span>\n" : "";
 		daysHTML += days[dayCells[_counter4]] ? days[dayCells[_counter4]] + "\n" : "";
 		daysHTML += "</td>\n";
 		daysHTML += (_counter4 + 1) % 7 == 0 && _counter4 != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
