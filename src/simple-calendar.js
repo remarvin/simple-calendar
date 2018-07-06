@@ -1,5 +1,5 @@
 /*
- * simple-calendar v1.0.0
+ * simple-calendar v1.0.1
  *
  * A simple JavaScript calendar with no dependencies.
  * By Ripley Marvin
@@ -143,6 +143,9 @@ function simpleCalendar (element, options = {}) {
   const lastWeekday = lastDay.getDay();
   const monthDays = lastDay.getDate();
   const monthStr = monthNames[month];
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const currentDay = new Date().getDate();
 
   // Construct day cells array
   let dayCells = [];
@@ -166,8 +169,20 @@ function simpleCalendar (element, options = {}) {
   //Construct days HTML
   let daysHTML = "<tr>\n";
   for (let counter = 0; counter < dayCells.length; counter++) {
-	daysHTML += "<td>\n";
-	daysHTML += dayCells[counter] === "" ? "" : `<span class="day">${dayCells[counter]}</span>\n`;
+	const isDay = dayCells[counter] != "";
+	const isCurrentDay = year === currentYear && month === currentMonth && dayCells[counter] === currentDay.toString();
+	
+	let dayClasses = [];
+	dayClasses.push(isDay ? "day" : "");
+	dayClasses.push(isCurrentDay ? "current-day" : "");
+	
+	daysHTML += "<td";
+	if (dayClasses != []) {
+	  daysHTML += ` class="${dayClasses.join(" ")}"`;
+	}
+	daysHTML += ">\n";
+	
+	daysHTML += isDay ? `<span class="day-number">${dayCells[counter]}</span>\n` : "";
 	daysHTML += days[dayCells[counter]] ? days[dayCells[counter]] + "\n" : "";
 	daysHTML += "</td>\n";
 	daysHTML += (counter + 1) % 7 == 0 && counter != dayCells.length - 1 ? "</tr>\n<tr>\n" : "";
