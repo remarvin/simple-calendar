@@ -1,13 +1,13 @@
 # simple-calendar
 A simple JavaScript calendar with no dependencies.
 
-Version: `1.0.0`
+Version: `1.0.1`
 
 ## Demo
 See the [demo page](http://www.ripleymarvin.com/demo-simple-calendar), or download the repository and view index.html for an example.
 
 ## Install
-Download the simple-calendar JavaScript file in the `dist` folder and include
+Download the minified simple-calendar JavaScript file in the `dist` folder and include
 ```
 <script src="path/to/simple-calendar.min.js"></script>
 ```
@@ -58,4 +58,4 @@ Use the `monthDisplay` option to set the display of the month name in the title.
 ```
 
 ### Styling
-Styling is up to you! The calendar HTML includes classes for the `month` display, `year` display, and `day` display numbers for easier styling.
+Styling is up to you! The calendar HTML includes classes for the `year`, `month`, `day`, `current-day`, and `day-number` elements for easier styling.

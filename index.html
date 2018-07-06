@@ -38,7 +38,7 @@
 		height: 40px;
 		vertical-align: baseline;
 		border: 1px solid #1c140d;
-		background-color: #ffffff;
+		background-color: #f5f5f5;
 	  }
 	  
 	  th:first-of-type {
@@ -67,8 +67,16 @@
 	  }
 	  
 	  .day {
+	    background-color: #ffffff;
+	  }
+	  
+	  .day-number {
 	    font-size: 12px;
 		font-style: italic;
+	  }
+	  
+	  .current-day .day-number {
+	    color: #ff3333;
 	  }
 	  
 	  #info {
@@ -86,10 +94,12 @@
 	<div id="info">
 	  <xmp>
 var demo = document.querySelector("#demo");
+var currentYear = new Date().getFullYear();
+var currentMonth = new Date().getMonth();
 
 simpleCalendar(demo, {
-  year: 2018,
-  month: 7,
+  year: currentYear,
+  month: currentMonth,
   dayDisplay: "letter",
   monthDisplay: "short",
   days: {
@@ -103,10 +113,12 @@ simpleCalendar(demo, {
 	<script src="dist/simple-calendar.min.js"></script>
 	<script>
 	  var demo = document.querySelector("#demo");
+	  var currentYear = new Date().getFullYear();
+	  var currentMonth = new Date().getMonth();
 	  
 	  simpleCalendar(demo, {
-	    year: 2018,
-		month: 7,
+	    year: currentYear,
+		month: currentMonth,
 		dayDisplay: "letter",
 		monthDisplay: "short",
 		days: {
