@@ -1,7 +1,7 @@
 "use strict";
 
 /*
- * simple-calendar v1.0.1
+ * simple-calendar v1.0.2
  *
  * A simple JavaScript calendar with no dependencies.
  * By Ripley Marvin
@@ -114,11 +114,11 @@ function simpleCalendar(element) {
 		var isCurrentDay = year === currentYear && month === currentMonth && dayCells[_counter4] === currentDay.toString();
 
 		var dayClasses = [];
-		dayClasses.push(isDay ? "day" : "");
-		dayClasses.push(isCurrentDay ? "current-day" : "");
+		isDay ? dayClasses.push("day") : "";
+		isCurrentDay ? dayClasses.push("current-day") : "";
 
 		daysHTML += "<td";
-		if (dayClasses != []) {
+		if (dayClasses.length) {
 			daysHTML += " class=\"" + dayClasses.join(" ") + "\"";
 		}
 		daysHTML += ">\n";
