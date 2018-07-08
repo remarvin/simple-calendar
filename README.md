@@ -1,7 +1,7 @@
 # simple-calendar
 A simple JavaScript calendar with no dependencies.
 
-Version: `1.0.1`
+Version: `1.0.2`
 
 ## Demo
 See the [demo page](http://www.ripleymarvin.com/demo-simple-calendar), or download the repository and view index.html for an example.
