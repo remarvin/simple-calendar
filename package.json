@@ -1,6 +1,6 @@
 {
   "name": "simple-calendar",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A simple JavaScript calendar with no dependencies.",
   "main": "main.js",
   "scripts": {
