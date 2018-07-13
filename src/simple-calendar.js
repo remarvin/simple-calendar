@@ -1,5 +1,5 @@
 /*
- * simple-calendar v1.0.2
+ * simple-calendar v1.0.3
  *
  * A simple JavaScript calendar with no dependencies.
  * By Ripley Marvin
@@ -93,10 +93,10 @@ function simpleCalendar (element, options = {}) {
 		"Mar",
 		"Apr",
 		"May",
-		"June",
-		"July",
+		"Jun",
+		"Jul",
 		"Aug",
-		"Sept",
+		"Sep",
 		"Oct",
 		"Nov",
 		"Dec"

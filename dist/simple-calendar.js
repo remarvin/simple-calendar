@@ -1,7 +1,7 @@
 "use strict";
 
 /*
- * simple-calendar v1.0.2
+ * simple-calendar v1.0.3
  *
  * A simple JavaScript calendar with no dependencies.
  * By Ripley Marvin
@@ -67,7 +67,7 @@ function simpleCalendar(element) {
 	var monthNames = [];
 	switch (monthDisplay) {
 		case "short":
-			monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+			monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			break;
 		case "number":
 			monthNames = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
