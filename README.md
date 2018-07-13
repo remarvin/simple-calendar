@@ -44,7 +44,7 @@ days: {
 ### Day Display
 Use the `dayDisplay` option to set the display of the day names in the header row. Options include:
 ```
-"short"    // "Sun", "Mon", "Tues", etc. -- default
+"short"    // "Sun", "Mon", "Tue", etc. -- default
 "long"     // "Sunday", "Monday", "Tuesday", etc.
 "letter"   // "S", "M", "T", etc.
 ```
